@@ -1,0 +1,468 @@
+/* ===================================================================== */
+/* GENERAL / RESET STYLES                                                */
+/* ===================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.6s ease, color 0.6s ease;
+}
+
+/* ===================================================================== */
+/* THEMES (Unified Coffee Gradients)                                     */
+/* ===================================================================== */
+body.dark-theme {
+    background: linear-gradient(to bottom, #1a1a1a, #4d4237, #7a6a53);
+    color: #fff;
+}
+
+body.light-theme {
+    background: linear-gradient(to bottom, #f5f0e8, #7a6a53, #4d4237);
+    color: #333;
+}
+
+/* ===================================================================== */
+/* NAVIGATION - UPDATED FOR RESPONSIVENESS                               */
+/* ===================================================================== */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.0);
+    backdrop-filter: blur(5px);
+    transition: background 0.6s ease, color 0.6s ease;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 70px;
+    height: 70px;
+    transition: transform 0.5s ease;
+    transform-origin: center center;
+    display: block;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-text span {
+    position: relative;
+    display: inline-block;
+    transition: color 0.6s ease, text-shadow 0.6s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+body.dark-theme .logo-text span:first-child {
+    color: #fff;
+}
+
+body.light-theme .logo-text span:first-child {
+    color: #4b4b4b;
+}
+
+body.dark-theme .logo-text span:last-child {
+    color: rgb(171, 151, 108);
+}
+
+body.light-theme .logo-text span:last-child {
+    color: rgb(171, 151, 108);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin-left: auto;
+}
+
+.nav-links a {
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    color: rgb(171, 151, 108);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 0%;
+    background: rgb(171, 151, 108);
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ===================================================================== */
+/* BUTTONS / CTA                                                         */
+/* ===================================================================== */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #c49b63;
+    backdrop-filter: blur(5px);
+    font-size: 1.1rem;
+}
+
+body.dark-theme .btn {
+    background: rgba(196, 155, 99, 0.2);
+    color: #fff;
+}
+
+body.dark-theme .btn:hover {
+    background: rgba(196, 155, 99, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(196, 155, 99, 0.3);
+}
+
+body.light-theme .btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+}
+
+body.light-theme .btn:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+/* ===================================================================== */
+/* FOOTER                                                                */
+/* ===================================================================== */
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 1rem;
+    transition: background 0.6s ease, color 0.6s ease;
+}
+
+body.dark-theme footer,
+body.light-theme footer {
+    color: #fff;
+}
+
+/* ===================================================================== */
+/* THEME SWITCH                                                          */
+/* ===================================================================== */
+.theme-switch {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid #c49b63;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1100;
+}
+
+.theme-switch:hover {
+    background: rgba(196, 155, 99, 0.5);
+    transform: scale(1.1);
+}
+
+.theme-switch i {
+    font-size: 1.5rem;
+    color: #fff;
+    transition: color 0.6s ease;
+}
+
+body.light-theme .theme-switch i {
+    color: #fff;
+}
+
+/* ===================================================================== */
+/* RESPONSIVE DESIGN - MOBILE NAVIGATION ADJUSTMENTS                     */
+/* ===================================================================== */
+
+/* Burger menu - hidden by default */
+.burger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1100;
+    margin-left: auto;
+}
+
+.burger div {
+    width: 100%;
+    height: 4px;
+    background: rgb(171, 151, 108);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+
+    /* Navigation adjustments */
+    nav {
+        padding: 0.8rem 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    /* Logo adjustments */
+    .logo img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .logo-text {
+        font-size: 1.4rem;
+        flex-direction: column;
+        line-height: 1.2;
+    }
+
+    /* Burger menu visible */
+    .burger {
+        display: flex;
+    }
+
+    /* Nav links dropdown style - FIXED VISIBILITY ISSUE */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(26, 26, 26, 0.98);
+        backdrop-filter: blur(10px);
+        text-align: center;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.5s ease-out;
+        padding: 0;
+    }
+
+    .nav-links.show {
+        max-height: 500px;
+        padding: 1.2rem 0;
+    }
+
+    .nav-links li {
+        padding: 1rem 0;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+        color: #fff !important;
+        /* Force white text in mobile menu */
+    }
+
+    /* Ensure links are visible in both themes */
+    body.dark-theme .nav-links a,
+    body.light-theme .nav-links a {
+        color: #fff !important;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+        color: rgb(171, 151, 108) !important;
+    }
+
+    /* Animate burger to X */
+    .burger.toggle div:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .burger.toggle div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .burger.toggle div:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -7px);
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    nav {
+        padding: 0.7rem 1rem;
+    }
+
+    .logo {
+        gap: 8px;
+    }
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .logo-text {
+        font-size: 1.2rem;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+    }
+
+    .burger {
+        width: 32px;
+        height: 27px;
+    }
+}
+
+/* ===================================================================== */
+/* HERO SECTION STYLES (from index.css)                                  */
+/* ===================================================================== */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8rem 2rem 4rem;
+    min-height: 100vh;
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.hero-p {
+    font-size: 1.4rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+}
+
+#GT {
+    font-weight: 700;
+    color: rgb(171, 151, 108);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.hero-image {
+    flex-shrink: 0;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* Responsive hero section */
+@media (max-width: 968px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 7rem 1.5rem 3rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-p {
+        font-size: 1.2rem;
+    }
+
+    .cta-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .hero-image {
+        margin-top: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 6rem 1rem 2rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-p {
+        font-size: 1.1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+    }
+}

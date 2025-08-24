@@ -1,0 +1,284 @@
+/* ============================ */
+/* PRODUCTS SECTION STYLES       */
+/* ============================ */
+
+.products-section {
+    margin-top: 4rem;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.products-intro h2 {
+    font-size: 2rem;
+    color: #f4d88d;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+.products-intro p {
+    font-size: 1rem;
+    color: #fff;
+    max-width: 700px;
+    margin: 0 auto 2rem auto;
+    line-height: 1.5;
+}
+
+/* ============================ */
+/* CAROUSEL WRAPPER             */
+/* ============================ */
+
+.products-carousel {
+    margin-top: 2rem;
+    position: relative;
+    text-align: center;
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    perspective: 1200px;
+    position: relative;
+    height: 340px;
+    /* slightly taller for polygon */
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+
+/* ============================ */
+/* PRODUCT CARDS                */
+/* ============================ */
+
+.product-card {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease, opacity 0.6s ease, z-index 0.6s ease, visibility 0.6s ease;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) scale(0.65) rotateY(0deg);
+    width: 240px;
+    color: #fff;
+    /* default text color for all cards */
+}
+
+.product-card.active {
+    transform: translateX(-50%) scale(1) rotateY(0deg);
+    opacity: 1;
+    visibility: visible;
+    z-index: 5;
+    box-shadow: 0 18px 40px rgba(196, 155, 99, 0.65);
+    background: linear-gradient(135deg, #f0be79, #b5a067, #423b27);
+    clip-path: polygon(0% 20%, 50% 0%, 100% 20%, 90% 100%, 10% 100%);
+    width: 260px;
+    min-height: 320px;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #fff;
+    /* ensure text inside active card is white */
+}
+
+/* Ensure headings and paragraphs inside cards are white */
+.product-card h3,
+.product-card p {
+    color: #fff;
+    margin: 0.2rem 0;
+}
+
+.product-card.prev {
+    transform: translateX(-140%) scale(0.75) rotateY(20deg);
+    opacity: 1;
+    visibility: visible;
+    z-index: 3;
+}
+
+.product-card.next {
+    transform: translateX(80%) scale(0.75) rotateY(-20deg);
+    opacity: 1;
+    visibility: visible;
+    z-index: 3;
+}
+
+.product-card.hidden {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1;
+}
+
+/* Images */
+.product-card img {
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 1rem;
+    transition: transform 0.5s ease;
+}
+
+.product-card.active img:hover {
+    transform: scale(1.05);
+}
+
+/* ============================ */
+/* BELOW CARDS SECTION          */
+/* ============================ */
+
+.products-details {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 1rem;
+    flex-wrap: wrap;
+}
+
+.product-detail-card {
+    background: linear-gradient(135deg, rgba(196, 155, 99, 0.3), rgba(244, 216, 141, 0.2));
+    backdrop-filter: blur(8px);
+    border-radius: 25px;
+    width: 240px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(196, 155, 99, 0.2);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    cursor: pointer;
+    border: 1px solid rgba(196, 155, 99, 0.25);
+}
+
+.product-detail-card h3 {
+    font-size: 1.2rem;
+    color: #f4d88d;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.product-detail-card p {
+    font-size: 0.95rem;
+    color: #fff;
+    line-height: 1.4;
+}
+
+/* Hover effect */
+.product-detail-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(196, 155, 99, 0.4);
+    background: linear-gradient(135deg, rgba(244, 216, 141, 0.4), rgba(196, 155, 99, 0.25));
+}
+
+/* ============================ */
+/* RESPONSIVE                   */
+/* ============================ */
+
+@media (max-width: 768px) {
+
+    /* Slightly smaller previous card, visible for 3D effect */
+    .product-card.prev {
+        transform: translateX(-80%) scale(0.6) rotateY(15deg);
+        width: 150px;
+        min-height: 220px;
+        opacity: 0.5;
+        z-index: 2;
+        visibility: visible;
+        box-shadow: none;
+    }
+
+    /* Slightly smaller next card, visible for 3D effect */
+    .product-card.next {
+        transform: translateX(60%) scale(0.6) rotateY(-15deg);
+        width: 150px;
+        min-height: 220px;
+        opacity: 0.5;
+        z-index: 2;
+        visibility: visible;
+        box-shadow: none;
+    }
+
+    /* Active card centered and prominent */
+    .product-card.active {
+        transform: translateX(-50%) scale(0.8) rotateY(0deg);
+        width: 200px;
+        min-height: 250px;
+        padding: 1.2rem 0.8rem;
+        z-index: 5;
+        box-shadow: 0 12px 28px rgba(196, 155, 99, 0.5);
+        clip-path: polygon(0% 20%, 50% 0%, 100% 20%, 90% 100%, 10% 100%);
+    }
+
+    /* Hidden cards */
+    .product-card.hidden {
+        display: none;
+    }
+
+    /* General product-card settings */
+    .product-card {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin: 0 auto;
+        opacity: 1;
+        visibility: visible;
+        transition: transform 0.6s ease, opacity 0.6s ease, z-index 0.6s ease;
+    }
+}
+
+/* ================ */
+
+
+@media (max-width: 768px) {
+
+    .product-card.prev {
+        transform: translateX(-120%) scale(0.7) rotateY(15deg);
+        width: 160px;
+        min-height: 220px;
+        opacity: 0.6;
+        z-index: 3;
+        visibility: visible;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+
+    /* Next card: visible on the right, slightly behind */
+    .product-card.next {
+        transform: translateX(30%) scale(0.7) rotateY(-15deg);
+        width: 160px;
+        min-height: 220px;
+        opacity: 0.6;
+        z-index: 3;
+        visibility: visible;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Active card: front and prominent */
+    .product-card.active {
+        transform: translateX(-50%) scale(0.85) rotateY(0deg);
+        width: 200px;
+        min-height: 250px;
+        padding: 1.2rem 0.8rem;
+        z-index: 5;
+        box-shadow: 0 12px 28px rgba(196, 155, 99, 0.5);
+        clip-path: polygon(0% 20%, 50% 0%, 100% 20%, 90% 100%, 10% 100%);
+    }
+
+    /* Hidden cards remain hidden */
+    .product-card.hidden {
+        display: none;
+    }
+
+    /* General settings for all cards */
+    .product-card {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin: 0 auto;
+        opacity: 1;
+        visibility: visible;
+        transition: transform 0.6s ease, opacity 0.6s ease, z-index 0.6s ease;
+        transform-style: preserve-3d;
+    }
+}
