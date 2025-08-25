@@ -282,3 +282,13 @@
         transform-style: preserve-3d;
     }
 }
+
+body.light-theme .products-section .products-intro .product-p {
+    color: #000;
+    font-weight: bolder;
+}
+
+body.light-theme .products-section .products-intro h2 {
+    color: #000;
+    font-weight: bolder;
+}

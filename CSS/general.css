@@ -107,6 +107,7 @@ body.light-theme .logo-text span:last-child {
     padding: 5px 0;
     transition: color 0.3s ease;
     font-size: 1.1rem;
+    font-weight: bolder;
 }
 
 .nav-links a.active,
@@ -285,6 +286,7 @@ body.light-theme .theme-switch i {
         max-height: 0;
         transition: max-height 0.5s ease-out;
         padding: 0;
+        font-weight: bolder;
     }
 
     .nav-links.show {
@@ -306,6 +308,7 @@ body.light-theme .theme-switch i {
     body.dark-theme .nav-links a,
     body.light-theme .nav-links a {
         color: #fff !important;
+
     }
 
     .nav-links a.active,
